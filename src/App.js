@@ -1,25 +1,42 @@
-import logo from './logo.svg';
 import './App.css';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
-function App() {
+import Stopwatch from './Stopwatch.js';
+import AlgSet from './AlgSet.js';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+}));
+
+export default function App() {
+  const classes = useStyles();
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        PLL trainer
       </header>
+      <div className='body'>
+          <Grid container spacing={6} justify='center'>
+            <Grid item lg={3}>
+              <AlgSet />
+            </Grid>
+            <Grid item lg={3} style={{minWidth:'250px'}}>
+              <Stopwatch />
+            </Grid>
+            <Grid item lg={3}>
+              <Paper className={classes.paper}>xs=12 sm=6</Paper>
+            </Grid>
+          </Grid>
+      </div>
     </div>
   );
 }
-
-export default App;
