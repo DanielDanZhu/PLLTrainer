@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import './App.css';
 
+import { scrambleData } from './scrambleData.js';
+
 class Stopwatch extends React.Component {
   state = {
     timerOn: false,
     timerStart: 0,
-    timerTime: 0
+    timerTime: 0,
+    scramble: null,
   };
 
   startTimer = () => {
@@ -34,6 +37,12 @@ class Stopwatch extends React.Component {
   };
 
   componentDidMount() {
+    var random = Object.keys(scrambleData)[Object.keys(scrambleData).length * Math.random() << 0];
+    console.log(random);
+    this.setState({
+      scramble: scrambleData[random].alg
+    });
+
     const handleSpace = (event) => {
        if (event.keyCode === 32) {
          if (this.state.timerOn) {
@@ -56,7 +65,10 @@ class Stopwatch extends React.Component {
     let hours = ("0" + Math.floor(timerTime / 3600000)).slice(-2);
     return (
       <div className="Stopwatch" style={{textAlign: 'center'}}>
-        <div className="Stopwatch-display">
+        <div className="Scramble-display" >
+          {this.state.scramble}
+        </div>
+        <div className="Stopwatch-display" >
           {seconds}.{centiseconds}
         </div>
       </div>

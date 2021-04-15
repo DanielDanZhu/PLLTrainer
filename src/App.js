@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 
 import Stopwatch from './Stopwatch.js';
 import AlgSet from './AlgSet.js';
+import TimesList from './TimesList.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,15 +26,15 @@ export default function App() {
         PLL trainer
       </header>
       <div className='body'>
-          <Grid container spacing={6} justify='center'>
-            <Grid item lg={3}>
+          <Grid container spacing={6} alignItems="center" justify='center'>
+            <Grid item lg={3} style={{maxHeight: '80vh', overflow: 'auto'}}>
               <AlgSet />
             </Grid>
             <Grid item lg={3} style={{minWidth:'250px'}}>
               <Stopwatch />
             </Grid>
             <Grid item lg={3}>
-              <Paper className={classes.paper}>xs=12 sm=6</Paper>
+              <TimesList />
             </Grid>
           </Grid>
       </div>
